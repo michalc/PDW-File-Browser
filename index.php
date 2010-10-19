@@ -1,7 +1,7 @@
 <?php
 /*
-PDW File Browser v1.2.1 beta
-Date: September 26, 2010
+PDW File Browser v1.3 beta
+Date: October 19, 2010
 Url: http://www.neele.name
 
 Copyright (c) 2010 Guido Neele
