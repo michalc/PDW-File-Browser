@@ -1,0 +1,164 @@
+/*
+PDW File Browser
+Skin: Dark
+Date: October 11, 2010
+Url: http://www.neele.name
+
+Copyright (c) 2010 Guido Neele
+*/
+
+body, label, input, td, select {font-family: arial, sans-serif;}
+
+div.loading {background-image: url(skins/mountainview_dark/images/ajaxLoader.gif);}
+
+div.ab {background-image:none; background-color:#333;}
+div.ab ol {background-image:none; background-position:right 1px; background-color:#DDDDDD; border:1px solid #DDD;}
+div.ab ol li.root {background-image:none; background-position:left 1px; width:10px;}
+div.ab ol li.root span {background:url(skins/mountainview_dark/images/root.png) left -2px; }
+div.ab ol li.root {width:20px;}
+div.ab ol li a {color: #6D6D6D;}
+div.ab ol li a:hover { color:#FFF; background: #E8BBBB none; border-left:0; border-right:0; margin-right:2px; border-radius:3px; -moz-border-radius:3px;}
+
+div#searchbar {background-image:none; background-position:right 1px; background-color:#DDDDDD; border:1px solid #DDD; margin-top:-26px;}
+div#searchbar .cap {background-image:none; background-position:left 1px; width:2px;}
+div#searchbar input {margin-top:3px; margin-left:3px;}
+div#searchbar div.button {background-image:url(skins/mountainview_dark/images/search.png); background-position:0 0; right:7px;}
+
+div.nb {background-image:none; background-color:#333; border-bottom:1px solid #000;}
+div.nb ul li a {color:#333; background: url(skins/mountainview_dark/images/navbar.png) right 0 no-repeat; height:21px; line-height: 21px;}
+div.nb ul li a span {background: url(skins/mountainview_dark/images/navbar.png) left -21px no-repeat; height:21px;}
+div.nb ul li a.selected,
+div.nb ul li a:hover {background: url(skins/mountainview_dark/images/navbar.png) right -84px no-repeat;}
+div.nb ul li a.selected span,
+div.nb ul li a:hover span {background: url(skins/mountainview_dark/images/navbar.png) left -63px no-repeat; color:#000;}
+div.nb ul li a span.options {background: transparent url(skins/mountainview_dark/images/navbar.png) left -42px no-repeat;}
+div.nb ul li a.selected span.options,
+div.nb ul li a:hover span.options {background: transparent url(skins/mountainview_dark/images/navbar.png) -20px -42px no-repeat;}
+
+div.nb ul ul { background-image: none; background-color:#FFF; border-color: #DDD; top:28px;}
+div.nb ul ul li a {background-image:none;}
+
+.context-menu-theme-mb { background: #FFF none; border:1px solid #DDD;}
+div.nb ul ul li a:hover, .context-menu-theme-mb .context-menu-item-hover .context-menu-item-inner { background-color:#6688EE; border-color:#4B95E5; color:#fff;}
+
+div.nb ul.right a.settings span img,
+div.nb ul.right a.help span img{ margin-top:3px;}
+
+div#tree {background-color: #ddd;}
+
+ul.treeview li a:hover.link {background-image:none;}
+ul.treeview li a:hover.link span.endcap {background-image:none;}
+ul.treeview li.selected {background: url(skins/mountainview_dark/images/selected.gif) left top repeat-x;}
+ul.treeview li.selected > .link {background-image: none; color:#fff;}
+ul.treeview li.selected > .link .endcap {background-image: none;}
+ul.treeview li a.link:hover { background-color: #E8BBBB; border-radius:3px; -moz-border-radius:3px;}
+ul.treeview li.selected > a.link:hover { background-color: transparent;}
+ul.treeview li a.link {padding-left: 22px;}
+ul.treeview li a.link.root span.icon {background-image:url(skins/mountainview_dark/images/root.png);}
+ul.treeview li a.link span.icon {background-image:url(skins/mountainview_dark/images/folder.png);}
+ul.treeview li a.handler {}
+ul.treeview li a.children {background-image: url(skins/mountainview_dark/images/handler.gif);}
+ul.treeview li a.children:hover {}
+ul.treeview li a.open {background-image: url(skins/mountainview_dark/images/handler.gif);}
+ul.treeview li a.open:hover {}
+ul.treeview li a.children {background-position: 0 0;}
+ul.treeview li a.children:hover {background-position:0 0;}
+ul.treeview li a.open {background-position: -21px 0;}
+ul.treeview li a.open:hover {background-position:-21px 0;}
+ul.treeview li.selected > a.children {background-position: 0 0;}
+ul.treeview li.selected > a.children:hover {background-position: 0 0;}
+ul.treeview li.selected > a.open {background-position: -21px 0;}
+ul.treeview li.selected > a.open:hover {background-position: -21px 0;}
+
+div#vertical-resize-handler {background:none; background-color:#333;}
+
+div.fieldset {border-color: #333;}
+div.fieldset span.legend {background-color:#999; color: #B90000;}
+input.path.border {border-color: #333; background-color: #bbb;}
+
+div#main {background-color:#999; background-image: url(skins/mountainview_dark/images/main-header.gif); background-repeat:repeat-x;}
+div#main hr {background-color:transparent;}
+div#main h2 {color:#bbb; font-family: arial, sans-serif; line-height:29px;}
+
+div#settings div.window hr { background-color:#333;}
+
+div#files ul#content li {margin-top:3px;}
+div#files ul#content li a {border-bottom-color: #777;}
+
+div#files ul#list li a:hover,
+div#files ul#small_images li a:hover,
+div#files ul#large_images li a:hover,
+div#files ul#content li a:hover,
+div#files ul#tiles li a:hover { background-image:none; background-color:#E8BBBB; border-radius:3px; -moz-border-radius:3px;}
+
+div#files ul#list li a span,
+div#files ul#small_images li a span,
+div#files ul#large_images li a span,
+div#files ul#content li a span,
+div#files ul#tiles li a span { color:#555;}
+
+div#files ul#list li a span.filename,
+div#files ul#small_images li a span.filename,
+div#files ul#large_images li a span.filename,
+div#files ul#content li a span.filename,
+div#files ul#tiles li a span.filename { color:#111;}
+
+div#files ul#list li a:hover span.begin,
+div#files ul#small_images li a:hover span.begin,
+div#files ul#large_images li a:hover span.begin,
+div#files ul#content li a:hover span.begin,
+div#files ul#tiles li a:hover span.begin { background-image:none;}
+
+div#files ul#list li.selected a,
+div#files ul#small_images li.selected a,
+div#files ul#large_images li.selected a,
+div#files ul#content li.selected a,
+div#files ul#tiles li.selected a { background-image:none; background-color:#B90000; border-radius:3px; -moz-border-radius:3px;}
+
+div#files ul#list li.selected a span,
+div#files ul#small_images li.selected a span,
+div#files ul#large_images li.selected a span,
+div#files ul#content li.selected a span,
+div#files ul#tiles li.selected a span {color: #ccc;}
+
+div#files ul#list li.selected a span.begin,
+div#files ul#small_images li.selected a span.begin,
+div#files ul#large_images li.selected a span.begin,
+div#files ul#content li.selected a span.begin,
+div#files ul#tiles li.selected a span.begin { background-image:none;}
+
+div#files table#details thead th, 
+div#files table#details thead th.end {background: #fff url(skins/mountainview_dark/images/details-header.png) left top repeat-x; border:1px solid #BBCCFF; border-left:0; color:#999; font-size:11px; height:22px; line-height:22px; padding:0 5px;}
+div#files table#details thead th:last-child {border-right:0;}
+div#files table#details {width:100%;}
+div#files table#details tbody tr {border-bottom: 1px solid #DDD; height:22px;}
+div#files table#details tbody tr td {color: #000; line-height:22px;}
+div#files table#details tbody tr:hover td {background:none; background-color:#BBCCFF; color:#000;}
+div#files table#details tbody tr.selected td {background:none; background-color:#6688EE; color:#EFEFEF;}
+div#files table#details tbody td.begin{padding-left:3px;}
+div#files table#details tbody td{white-space: nowrap; color:#000;}
+div#files table#details tbody td.end {width:100%;}
+
+div#files ul#list li a span.icon.folder{ background-image: url(skins/mountainview_dark/images/16/folder.png);}
+div#files ul#tiles li a span.icon.folder{ background-image: url(skins/mountainview_dark/images/48/folder.png);}
+div#files ul#small_images li a span.icon.folder{ background-image: url(skins/mountainview_dark/images/48/folder.png);}
+div#files ul#large_images li a span.icon.folder{ background-image: url(skins/mountainview_dark/images/96/folder.png);}
+div#files ul#content li a span.icon.folder{ background-image: url(skins/mountainview_dark/images/32/folder.png);}
+div#files table#details td.icon span.folder{ background-image: url(skins/mountainview_dark/images/16/folder.png);}
+
+div#file-specs {background:#333 none; border-top: 1px solid #000;}
+div#file-specs form#fileform input { border-color:#333; background-color:#999;}
+div#file-specs form#fileform label { color:#ddd;}
+div#file-specs #info div {color:#ddd;}
+div#file-specs #info div a {color: #E8BBBB;}
+div#file-specs #info div a:hover {text-decoration: underline;}
+div#file-specs #info div span {color: #777;}
+div#file-specs #info div.icon.folder{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../skins/mountainview_dark/images/256/folder.png&far=1&bg=0000FF);}
+div#file-specs #info div.filetype {color: #777;}
+
+#lbOverlay { background-color:#000;}
+#lbCenter { background-color: #999999;}
+.lbLoading { background-color: #999999; background-image: url(skins/mountainview_dark/images/ajaxLoader.gif);}
+#lbImage { border-color: #999999;}
+#lbBottom { color: #666; border-color: #333;}
+#lbCloseLink { background-image:url(skins/mountainview_dark/images/closelabel.gif);}
