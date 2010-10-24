@@ -2,22 +2,24 @@
 
 	$.MediaBrowser = {
 	
+		absoluteURL: false,
 		clipboard: new Array(),
 		copyMethod: '',
 		ctrlKeyPressed: false,
+		currentFile: '',
 		currentFolder: '',
 		currentView: '',
 		dragMode: false,
 		dragObj: null,
 		dragID: '',
+		hostname: "http://" + window.location.host,
 		lastSelectedItem:null,
 		searchDefaultValue: '',
 		shiftKeyPressed: false,
 		tableHeadersFixed: 0,
 		timeout: null,
 		
-		init: function(options){
-			if (options) for (key in options) $.MediaBrowser[key] = options[key];
+		init: function(){
 			
 			// Add treeview
 			$('ul.treeview').TreeView();
@@ -34,6 +36,9 @@
 			// Set currently selected folder and view
 			$.MediaBrowser.setCurrentFolder($('input#currentfolder').val());
 			$.MediaBrowser.currentView = $('input#currentview').val();
+			
+			//Check if a url should be returned absolute
+			$.MediaBrowser.absoluteURL = $('#absolute_url').is(':checked') ? true : false;
 			
 			//Stripe table if view is Details
 			$('div#files table#details tbody tr:odd').addClass('odd');
@@ -144,27 +149,35 @@
 			});
 			
 			$('div#files ul li a.image, div#files table tr.image').live('dblclick', function(event){
-                $("form#fileform input#file").val($(this).attr('href'));
+                var host = '';
+				var path = $(this).attr('href');
+				
+				if($.MediaBrowser.absoluteURL){
+                    host = $.MediaBrowser.hostname;
+                }
+				
+				$("form#fileform input#file").val(host + path);
                 $.MediaBrowser.insertFile();
                 event.preventDefault(); //Don't follow link
             });
 			
-			$('div#files').click(function(event){
-				if (event.button != 0) return true; //If right click then return true
-				if ($(event.target).closest('.files').length == 1) return true;
-				
-				$('div#files li.selected, div#files tr.selected').removeClass("selected"); //Deselect all selected items
-				$.MediaBrowser.updateFileSpecs($.MediaBrowser.currentFolder, 'folder');
-				
-				$('table.contextmenu, div.context-menu-shadow').css({'display': 'none'}); //Hide all contextmenus
-			});	
-			
+            $('div#files').click(function(event){
+                if (event.button != 0) return true; //If right click then return true
+                if ($(event.target).closest('.files').length == 1) return true;
+
+                $('div#files li.selected, div#files tr.selected').removeClass("selected"); //Deselect all selected items
+                $.MediaBrowser.updateFileSpecs($.MediaBrowser.currentFolder, 'folder');
+                $.MediaBrowser.currentFile = '';
+
+                $('table.contextmenu, div.context-menu-shadow').css({'display': 'none'}); //Hide all contextmenus
+            });
+
 			// Add event handlers to links in addressbar
 			$('div#addressbar a[href]').live('click', function(event){
 				$.MediaBrowser.loadFolder($(this).attr('href'));
 				event.preventDefault(); //Don't follow link
 			});
-			
+
 			// Add event handlers to links in addressbar
 			$('input#fn').live('keyup', function(event){
 				if(this.value != this.defaultValue){
@@ -189,6 +202,25 @@
 				}
 			);
 			
+			//Absolute URl active/inactive
+			$('#absolute_url').click(function(){
+				if ($('#absolute_url').is(':checked')) {
+					$.MediaBrowser.absoluteURL = true;
+					if ($.MediaBrowser.currentFile !== '') {
+						$("form#fileform input#file").val($.MediaBrowser.hostname + $.MediaBrowser.currentFile);
+					}
+					$.MediaBrowser.createCookie('absoluteURL', true, 365);
+				}
+				else 
+				{
+					$.MediaBrowser.absoluteURL = false;
+					if ($.MediaBrowser.currentFile !== '') {
+						$("form#fileform input#file").val($.MediaBrowser.currentFile);
+					}
+					$.MediaBrowser.createCookie('absoluteURL', false, 365);
+				}
+			});
+			
 			// Reset layout if window is being resized
 			window.onresize = window.onload = function(){
 				$.MediaBrowser.resizeWindow();
@@ -203,7 +235,7 @@
 			$('input#search').val($.MediaBrowser.searchDefaultValue);
 			
 			//Save view to cookie
-			$.MediaBrowser.createCookie("view", $.MediaBrowser.currentView, 30);
+			$.MediaBrowser.createCookie("pdw-view", $.MediaBrowser.currentView, 30);
 			
 			return false;
 		},
@@ -244,7 +276,7 @@
 				files.push( urlencode($(this).attr("href")) );
 			});
 			
-			$.post("actions.php", {'action': 'delete', 'files': files, 'filter':$.MediaBrowser.typeFilter}, function(data){
+			$.post("actions.php", {'action': 'delete', 'files': files}, function(data){
 				if(data.substring(0,7) == 'success'){ //Delete was a success
 					message = data.split("||");
 					$.MediaBrowser.hideContextMenu();
@@ -324,71 +356,86 @@
 		insertFile: function(){
 			
 			var URL = $("form#fileform input#file").val();
-			var reg = new RegExp(".+/([^/]+)");
-			var mat = reg.exec(URL);
-			var name = mat[1];
 			
-			if (URL == '') {
+			if (URL == '') 
+			{
                 $.MediaBrowser.showMessage(select_one_file);
 			}
 			
-			// TINYMCE
-            if(editor == "tinymce"){
-				try {
+			
+            if(editor == "tinymce")
+			{
+				try 
+				{
 					var win = tinyMCEPopup.getWindowArg("window");
-				} catch(err) {
+				} 
+				catch(err) 
+				{
 					$.MediaBrowser.showMessage(insert_cancelled);
 					return;
-				}	
-				
-                var insertType = tinyMCEPopup.getWindowArg("insert");
- 				var type = tinyMCEPopup.getWindowArg("type");
-				  if (insertType == "toDocument" && type == "image") {
+				}
+
+				var insertType = tinyMCEPopup.getWindowArg("insert");
+				var type = tinyMCEPopup.getWindowArg("type");
+				if (insertType == "toDocument" && type == "image") {
 					var args = {'src':URL};
- 					var ed = tinyMCE.activeEditor;
+					var ed = tinyMCE.activeEditor;
 					ed.execCommand('mceInsertContent', false, '<img id="__mce_tmp" />', {skip_undo : 1});
 					ed.dom.setAttribs('__mce_tmp', args);
 					el = ed.dom.get('__mce_tmp');
 
 					ed.dom.setAttrib('__mce_tmp', 'id', '');
 					ed.undoManager.add();
-	
-                                }
+				}
 
 				if (insertType == "toDocument" && type =="file") {
 					var args = {'href':URL};
 
 					var ed = tinyMCE.activeEditor;
-                                        ed.execCommand('mceInsertContent', false, '<a id="__mce_tmp">'+name+'</a>', {skip_undo : 1});
-                                        ed.dom.setAttribs('__mce_tmp', args);
-                                        el = ed.dom.get('__mce_tmp');
+					ed.execCommand('mceInsertContent', false, '<a id="__mce_tmp">'+name+'</a>', {skip_undo : 1});
+					ed.dom.setAttribs('__mce_tmp', args);
+					el = ed.dom.get('__mce_tmp');
 
-                                        ed.dom.setAttrib('__mce_tmp', 'id', '');
-                                        ed.undoManager.add();
+					ed.dom.setAttrib('__mce_tmp', 'id', '');
+					ed.undoManager.add();
 				}
 
 				if (insertType != "toDocument") {
-				  // insert information now
-				  win.document.getElementById(tinyMCEPopup.getWindowArg("input")).value = URL;
-						  
-				  // are we an image browser
-				  if (typeof(win.ImageDialog) != "undefined") {
-					  // we are, so update image dimensions...
-					  if (win.ImageDialog.getImageData) 
-						  win.ImageDialog.getImageData();
-							  
-					  // ... and preview if necessary
-					  if (win.ImageDialog.showPreviewImage) 
-						  win.ImageDialog.showPreviewImage(URL);
-				  }
-						  
-                                }
-				  // close popup window
-				  tinyMCEPopup.close();
-			
-			// CKEDITOR		
-            } else if(editor == "ckeditor"){
+					// insert information now
+					win.document.getElementById(tinyMCEPopup.getWindowArg("input")).value = URL;
 
+					// are we an image browser
+					if (typeof(win.ImageDialog) != "undefined") {
+						// we are, so update image dimensions...
+						if (win.ImageDialog.getImageData) 
+							win.ImageDialog.getImageData();
+
+						// ... and preview if necessary
+						if (win.ImageDialog.showPreviewImage) 
+							win.ImageDialog.showPreviewImage(URL);
+					}	
+					
+					// insert information now
+					win.document.getElementById(tinyMCEPopup.getWindowArg("input")).value = URL;
+					
+					// are we an image browser
+					if (typeof(win.ImageDialog) != "undefined") 
+					{
+						// we are, so update image dimensions...
+						if (win.ImageDialog.getImageData) 
+							win.ImageDialog.getImageData();
+						
+						// ... and preview if necessary
+						if (win.ImageDialog.showPreviewImage) 
+							win.ImageDialog.showPreviewImage(URL);
+					}
+				}
+						
+				// close popup window
+				tinyMCEPopup.close();
+            } 
+			else if(editor == "ckeditor")	
+			{
                 try {
 					window.opener.CKEDITOR.tools.callFunction(funcNum, URL);
 					window.close();
@@ -396,8 +443,14 @@
 					$.MediaBrowser.showMessage(insert_cancelled);
                     return;
 				}
-				
-			} else {
+			} 
+			else if(editor == "standalone")
+			{
+				window.opener.document.getElementById(returnID).value = URL;
+				window.close();
+			} 
+			else 
+			{
 				$.MediaBrowser.showMessage("No editor available, see config.php!");
 			}
 
@@ -429,7 +482,8 @@
 					viewfile = 'view_content.php';
 					break;
 			}
-			$.post(viewfile, {'ajax':true, 'path': urlencode(folder), 'filter':$.MediaBrowser.typeFilter}, function(data){
+			
+			$.post(viewfile, {'ajax':true, 'path': urlencode(folder)}, function(data){
 				if(data.substring(0,3) == '0||'){
 					message = data.split("||");
 					$('div#files').html("");
@@ -460,7 +514,8 @@
 			var message; 
 			var folderpath = $('form#newfolderform input#folderpath').val();
 			var foldername = $('form#newfolderform input#foldername').val();
-			$.post('actions.php', {'ajax':true, 'action': 'create_folder', 'folderpath': urlencode(folderpath), 'foldername': urlencode(foldername), 'filter':$.MediaBrowser.typeFilter}, function(data){
+			
+			$.post('actions.php', {'ajax':true, 'action': 'create_folder', 'folderpath': urlencode(folderpath), 'foldername': urlencode(foldername)}, function(data){
 				if(data.substring(0,7) == 'success'){
 					
 					$.MediaBrowser.currentFolder = folderpath + foldername + '/';
@@ -492,7 +547,7 @@
 					   { // Post arguments
 					   		'action': action+'_paste', 
 					   		'files': $.MediaBrowser.clipboard, 
-					   		'folder': urlencode($.MediaBrowser.currentFolder), 'filter':$.MediaBrowser.typeFilter
+					   		'folder': urlencode($.MediaBrowser.currentFolder)
 					   }, 
 					   function(data){ // Callback
 							if(data.substring(0,7) != 'success'){ // Paste was NOT successful
@@ -520,8 +575,7 @@
 							$.MediaBrowser.reloadTree();
 						}
 				);
-			}
-			
+			}		
 		},
 		
 		printClipboard: function(){
@@ -539,7 +593,7 @@
 		},
 		
 		reloadTree: function(){
-			$.post('treeview.php', {'ajax': true,'filter':$.MediaBrowser.typeFilter}, function(data){
+			$.post('treeview.php', {'ajax': true}, function(data){
 				$('div#tree').html(data);	
 				$('ul.treeview').TreeView();
 				
@@ -589,7 +643,7 @@
 					'new_filename': urlencode(new_filename),  
 					'old_filename': urlencode(old_filename), 
 					'folder': urlencode($.MediaBrowser.currentFolder),
-					'type': type, 'filter':$.MediaBrowser.typeFilter
+					'type': type
 				}, 
 				function(data){ // Callback
 					if(data.substring(0,7) != 'success'){ // Paste was NOT successful
@@ -639,7 +693,7 @@
 			$.MediaBrowser.createCookie('language', language, 365);
 			$.MediaBrowser.createCookie('skin', skin, 365);
 			
-			$.post("actions.php", { 'action': 'settings' , 'filter':$.MediaBrowser.typeFilter}, 
+			$.post("actions.php", { 'action': 'settings' }, 
                 function(data){ // Callback
                     alert(data);
                     window.location.reload();
@@ -693,6 +747,7 @@
 
 			//See if function is called via a context menu
 			var cm = (typeof arguments[3] == 'undefined') ? false : true;
+            var host = '';
 
 			// Hide all visible contextmenus
 			$('table.contextmenu, div.context-menu-shadow').css({'display': 'none'});
@@ -701,9 +756,14 @@
 			$.MediaBrowser.updateFileSpecs(path, type);
 			
 			if(type != "folder" && $('div#files li.selected, div#files tr.selected').length == 1){
-				$("form#fileform input#file").val(path);
+				if($.MediaBrowser.absoluteURL){
+					host = $.MediaBrowser.hostname;
+				}
+				$("form#fileform input#file").val(host + path);
+				$.MediaBrowser.currentFile = path;
 			} else {
 				$("form#fileform input#file").val("");	
+				$.MediaBrowser.currentFile = '';
 			}
 		},
 		
@@ -936,7 +996,11 @@
 		
 		// Show detailed information over the selected file or folder
 		updateFileSpecs: function(path, type){
-			$('div#file-specs #info').load('file_specs.php', {'ajax':true, 'path': urlencode(path), 'type': type});
+			$('div#file-specs #info').load('file_specs.php', {'ajax':true, 'path': urlencode(path), 'type': type}, function(){
+				$("div#file-specs a[rel^='lightbox']").slimbox({/* Put custom options here */}, null, function(el) {
+		            return (this == el) || ((this.rel.length > 8) && (this.rel == el.rel));
+		        });
+			});
 			$('input#file').val("");
 		},
 		
@@ -1011,4 +1075,4 @@ function printf() {
     	oStr = oStr.replace(re, arguments[i]); 
   	} 
   	return oStr; 
-} 
+}
