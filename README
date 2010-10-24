@@ -16,28 +16,10 @@ TinyMCE installation
 
 Add the following setting to the TinyMCE configuration:
 --------------------------------------------------------------------------
-file_browser_callback: "filebrowser",
 
-
-Add the following function to your javascript (for example below the configuration settings)
---------------------------------------------------------------------------
-function filebrowser(field_name, url, type, win) {
-		
-	fileBrowserURL = "/path/to/file/browser/index.php?filter=" + type;
-			
-	tinyMCE.activeEditor.windowManager.open({
-		title: "PDW File Browser",
-		url: fileBrowserURL,
-		width: 950,
-		height: 650,
-		inline: 0,
-		maximizable: 1,
-		close_previous: 0
-	},{
-		window : win,
-		input : field_name
-	});		
-}
+plugins: "pdw_file_browser",
+theme_advanced_buttons1 : "image,pdw_insertimage,|,link,unlink,pdw_insertfile",
+pdw_file_browser_url: "/path/from/root/to/pdw_file_browser/index.php"
 
 
 ========================
