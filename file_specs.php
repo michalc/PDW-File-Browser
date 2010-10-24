@@ -17,7 +17,7 @@ switch($type){
         $file_size = $file_size < 1024  ? $file_size. ' '.translate('bytes') : $file_size < 1048576 ? number_format($file_size / 1024, 2, $dec_seperator, $thousands_separator) . ' '.translate('kB') : number_format($file_size / 1048576, 2, $dec_seperator, $thousands_separator) . ' '.translate('MB');
 		$filename = array_pop((explode("/", $uploadpath)));
 	
-		printf('<div class="icon image"><img src="phpthumb/phpThumb.php?h=140&amp;w=140&amp;far=1&amp;src=%s&bg=0000FF" alt="%s" /></div>', urlencode($uploadpath), $filename);
+		printf('<div class="icon image"><img src="phpthumb/phpThumb.php?h=140&amp;w=140&amp;far=1&amp;src=%s" alt="%s" /></div>', urlencode($uploadpath), $filename);
    		printf('<div class="filename"><a href="%s" rel="lightbox">%s</a></div>', $uploadpath, $filename);
 		printf('<div class="filetype">%s</div>', $image_info['mime']);
 		printf('<div class="filemodified"><span>%s:&nbsp;</span>%s</div>',translate('Modified on'), $file_modified);

@@ -825,63 +825,63 @@ div#files table#details td.icon span.gz{ background-image: url(img/16/zip.png);}
 /**
  *  File Specification Icons
 **/
-div#file-specs #info div.icon{ width: 140px; height: 140px; left: 10px; top: 5px; background: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/icon.png&far=1&bg=0000FF) top left no-repeat;}
+div#file-specs #info div.icon{ width: 140px; height: 140px; left: 10px; top: 5px; background: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/icon.png&far=1) top left no-repeat;}
 /* Images */
 div#file-specs #info div.icon.image{ background-image: none;} 
 div#file-specs #info div.icon.jpg,
-div#file-specs #info div.icon.jpeg{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/jpg.png&far=1&bg=0000FF);} 
-div#file-specs #info div.icon.gif{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/gif.png&far=1&bg=0000FF);}
-div#file-specs #info div.icon.png{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/png.png&far=1&bg=0000FF);}
-div#file-specs #info div.icon.bmp{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/bmp.png&far=1&bg=0000FF);}
+div#file-specs #info div.icon.jpeg{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/jpg.png&far=1);} 
+div#file-specs #info div.icon.gif{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/gif.png&far=1);}
+div#file-specs #info div.icon.png{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/png.png&far=1);}
+div#file-specs #info div.icon.bmp{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/bmp.png&far=1);}
 div#file-specs #info div.icon.tif,
-div#file-specs #info div.icon.tiff{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/tiff.png&far=1&bg=0000FF);}
+div#file-specs #info div.icon.tiff{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/tiff.png&far=1);}
 /* Movies */
-div#file-specs #info div.icon.mov{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/mov.png&far=1&bg=0000FF);} 
+div#file-specs #info div.icon.mov{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/mov.png&far=1);} 
 div#file-specs #info div.icon.mpeg,
-div#file-specs #info div.icon.mpg{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/mpeg.png&far=1&bg=0000FF);}
-div#file-specs #info div.icon.avi{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/avi.png&far=1&bg=0000FF);}
-div#file-specs #info div.icon.flv{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/flv.png&far=1&bg=0000FF);}
-div#file-specs #info div.icon.wmv{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/wmv.png&far=1&bg=0000FF);}
+div#file-specs #info div.icon.mpg{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/mpeg.png&far=1);}
+div#file-specs #info div.icon.avi{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/avi.png&far=1);}
+div#file-specs #info div.icon.flv{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/flv.png&far=1);}
+div#file-specs #info div.icon.wmv{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/wmv.png&far=1);}
 /* Audio */
-div#file-specs #info div.icon.mp3{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/mp3.png&far=1&bg=0000FF);} 
-div#file-specs #info div.icon.wav{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/wav.png&far=1&bg=0000FF);}
-div#file-specs #info div.icon.wma{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/wma.png&far=1&bg=0000FF);}
+div#file-specs #info div.icon.mp3{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/mp3.png&far=1);} 
+div#file-specs #info div.icon.wav{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/wav.png&far=1);}
+div#file-specs #info div.icon.wma{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/wma.png&far=1);}
 /* Web */
-div#file-specs #info div.icon.asp{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/asp.png&far=1&bg=0000FF);}  
-div#file-specs #info div.icon.aspx{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/aspx.png&far=1&bg=0000FF);}
-div#file-specs #info div.icon.css{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/css.png&far=1&bg=0000FF);}
+div#file-specs #info div.icon.asp{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/asp.png&far=1);}  
+div#file-specs #info div.icon.aspx{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/aspx.png&far=1);}
+div#file-specs #info div.icon.css{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/css.png&far=1);}
 div#file-specs #info div.icon.html,
-div#file-specs #info div.icon.htm{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/html.png&far=1&bg=0000FF);}
+div#file-specs #info div.icon.htm{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/html.png&far=1);}
 div#file-specs #info div.icon.class,
 div#file-specs #info div.icon.jar,
-div#file-specs #info div.icon.java{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/java.png&far=1&bg=0000FF);}
-div#file-specs #info div.icon.js{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/js.png&far=1&bg=0000FF);}
-div#file-specs #info div.icon.php{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/php.png&far=1&bg=0000FF);}
-div#file-specs #info div.icon.xml{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/xml.png&far=1&bg=0000FF);}
+div#file-specs #info div.icon.java{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/java.png&far=1);}
+div#file-specs #info div.icon.js{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/js.png&far=1);}
+div#file-specs #info div.icon.php{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/php.png&far=1);}
+div#file-specs #info div.icon.xml{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/xml.png&far=1);}
 /* Adobe */
-div#file-specs #info div.icon.eps{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/eps.png&far=1&bg=0000FF);}
-div#file-specs #info div.icon.pdf{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/pdf.png&far=1&bg=0000FF);} 
-div#file-specs #info div.icon.psd{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/psd.png&far=1&bg=0000FF);}
-div#file-specs #info div.icon.swf{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/swf.png&far=1&bg=0000FF);}
+div#file-specs #info div.icon.eps{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/eps.png&far=1);}
+div#file-specs #info div.icon.pdf{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/pdf.png&far=1);} 
+div#file-specs #info div.icon.psd{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/psd.png&far=1);}
+div#file-specs #info div.icon.swf{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/swf.png&far=1);}
 /* Microsoft */
 div#file-specs #info div.icon.doc,
-div#file-specs #info div.icon.docx{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/doc.png&far=1&bg=0000FF);}
-div#file-specs #info div.icon.exe{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/exe.png&far=1&bg=0000FF);}
-div#file-specs #info div.icon.folder{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/folder.png&far=1&bg=0000FF);}
-div#file-specs #info div.icon.mdb{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/mdb.png&far=1&bg=0000FF);}
+div#file-specs #info div.icon.docx{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/doc.png&far=1);}
+div#file-specs #info div.icon.exe{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/exe.png&far=1);}
+div#file-specs #info div.icon.folder{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/folder.png&far=1);}
+div#file-specs #info div.icon.mdb{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/mdb.png&far=1);}
 div#file-specs #info div.icon.ppt,
-div#file-specs #info div.icon.pptx{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/ppt.png&far=1&bg=0000FF);}
+div#file-specs #info div.icon.pptx{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/ppt.png&far=1);}
 div#file-specs #info div.icon.xls,
-div#file-specs #info div.icon.xlsx{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/xls.png&far=1&bg=0000FF);}
+div#file-specs #info div.icon.xlsx{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/xls.png&far=1);}
 /* Lettertype */
-div#file-specs #info div.icon.otf{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/font.png&far=1&bg=0000FF);}
-div#file-specs #info div.icon.ttf{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/ttf.png&far=1&bg=0000FF);}
+div#file-specs #info div.icon.otf{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/font.png&far=1);}
+div#file-specs #info div.icon.ttf{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/ttf.png&far=1);}
 /* Archives */
 div#file-specs #info div.icon.tgz,											 
 div#file-specs #info div.icon.tar,
 div#file-specs #info div.icon.rar,
 div#file-specs #info div.icon.zip,
-div#file-specs #info div.icon.gz{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/zip.png&far=1&bg=0000FF);}
+div#file-specs #info div.icon.gz{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../img/256/zip.png&far=1);}
 
 
 

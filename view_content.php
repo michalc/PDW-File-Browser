@@ -36,7 +36,7 @@ foreach($dirs as $key => $value){
                             <span class="filedim"><span class="label">%5$s:</span> %6$s x %7$s</span>
                             <span class="filemodified"><span class="label">%12$s:</span> %13$s</span>
                             <span class="filesize"><span class="label">%10$s:</span> %11$s</span>
-                            <span class="icon image"><img src="phpthumb/phpThumb.php?h=32&w=32&src=%4$s&far=1&bg=0000FF" /></span>
+                            <span class="icon image"><img src="phpthumb/phpThumb.php?h=32&w=32&src=%4$s&far=1" /></span>
                         </a>
                     </li>' . "\n", 
                     $selectedpath.$key, 

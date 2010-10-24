@@ -153,7 +153,7 @@ div#file-specs #info div {color:#ddd;}
 div#file-specs #info div a {color: #E8BBBB;}
 div#file-specs #info div a:hover {text-decoration: underline;}
 div#file-specs #info div span {color: #777;}
-div#file-specs #info div.icon.folder{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../skins/mountainview_dark/images/256/folder.png&far=1&bg=0000FF);}
+div#file-specs #info div.icon.folder{ background-image: url(phpthumb/phpThumb.php?h=140&w=140&src=../skins/mountainview_dark/images/256/folder.png&far=1);}
 div#file-specs #info div.filetype {color: #777;}
 
 #lbOverlay { background-color:#000;}

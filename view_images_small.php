@@ -26,7 +26,7 @@ foreach($dirs as $key => $value){
                         <a href="%1$s" title="%2$s" class="image">
                             <span class="begin"></span>
                             <span class="filename">%2$s</span>
-                            <span class="icon image"><img src="phpthumb/phpThumb.php?h=48&w=48&src=%4$s&far=1&bg=0000FF" /></span>
+                            <span class="icon image"><img src="phpthumb/phpThumb.php?h=48&w=48&src=%4$s&far=1" /></span>
                         </a>
                     </li>' . "\n", 
                     $selectedpath.$key, 
