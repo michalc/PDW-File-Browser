@@ -24,8 +24,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
-ob_start( 'ob_gzhandler' );
-
 define('MINIFY_CACHE_DIR', dirname(__FILE__) . '/cache');
 
 require_once('functions.php');
